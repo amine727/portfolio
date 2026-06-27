@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Brain, Heart, Shield, Building2, ExternalLink, Github, ArrowUpRight } from "lucide-react";
+import { Brain, Heart, Shield, Building2, Smartphone, Activity, Blocks, ExternalLink, Github, ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
@@ -14,6 +14,8 @@ const projects = [
     tags: ["Python", "Random Forest", "Logistic Regression", "Machine Learning", "Pandas", "Scikit-learn"],
     highlights: ["85%+ accuracy rate", "Multiple ML algorithms", "Data visualization"],
     category: "Machine Learning",
+    github: "#",
+    demo: "#",
   },
   {
     id: "clinic",
@@ -25,6 +27,8 @@ const projects = [
     tags: ["Java", "JavaFX", "Hibernate", "MySQL", "ORM", "MVC"],
     highlights: ["Patient management", "Appointment scheduling", "Medical records"],
     category: "Desktop Application",
+    github: "#",
+    demo: "#",
   },
   {
     id: "hotel",
@@ -36,6 +40,8 @@ const projects = [
     tags: ["C#", ".NET", "ASP.NET", "SQL Server", "WinForms", "OOP"],
     highlights: ["Room reservation management", "Guest check-in/check-out", "Billing & invoicing"],
     category: "Desktop Application",
+    github: "#",
+    demo: "#",
   },
   {
     id: "api-audit",
@@ -47,6 +53,47 @@ const projects = [
     tags: ["Burp Suite", "OWASP Top 10", "API Security", "Penetration Testing", "Juice Shop"],
     highlights: ["OWASP methodology", "Vulnerability documentation", "Security report"],
     category: "Security Audit",
+    github: "#",
+    demo: "#",
+  },
+  {
+    id: "android-mapper",
+    title: "Android Attack Surface Mapper",
+    description:
+      "Android attack surface analysis platform with detection of exported components, sensitive permissions, deep links, and AI-assisted security recommendations for mobile applications.",
+    icon: Smartphone,
+    accent: "#00d4ff",
+    tags: ["React", "JavaScript", "MobSF", "Frida", "Drozer", "Medusa"],
+    highlights: ["Exported component detection", "Permission analysis", "AI recommendations"],
+    category: "Mobile Security",
+    github: "#",
+    demo: "#",
+  },
+  {
+    id: "velociraptor",
+    title: "Incident Response with Velociraptor",
+    description:
+      "DFIR platform with attack simulation using Nmap, Hydra, and Metasploit, artifact collection across endpoints, and IoC analysis for rapid incident response and threat hunting.",
+    icon: Activity,
+    accent: "#00ff88",
+    tags: ["Velociraptor", "Kali Linux", "GNS3", "Metasploit", "Hydra", "Nmap"],
+    highlights: ["Attack simulation", "Artifact collection", "IoC analysis"],
+    category: "DFIR",
+    github: "#",
+    demo: "#",
+  },
+  {
+    id: "accichain",
+    title: "AcciChain",
+    description:
+      "Blockchain application for secure management of automobile accident records using Smart Contracts on Ethereum, IPFS for decentralized storage, and MetaMask for authentication.",
+    icon: Blocks,
+    accent: "#7c3aed",
+    tags: ["Solidity", "Ethereum", "IPFS", "React Native", "MetaMask"],
+    highlights: ["Smart contract automation", "Decentralized storage", "MetaMask auth"],
+    category: "Blockchain",
+    github: "#",
+    demo: "#",
   },
 ];
 
@@ -84,7 +131,7 @@ export default function Projects() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
               whileHover={{ y: -6 }}
-              className="group card rounded-2xl p-6 flex flex-col transition-all duration-300 cursor-pointer border-animated"
+              className="group card rounded-2xl p-6 flex flex-col transition-all duration-300 cursor-pointer border-animated relative"
               style={{ "--hover-accent": project.accent } as React.CSSProperties}
             >
               {/* Header */}
@@ -96,20 +143,26 @@ export default function Projects() {
                   <project.icon size={22} style={{ color: project.accent }} />
                 </div>
                 <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <motion.button
+                  <motion.a
+                    href={project.github}
+                    target={project.github !== "#" ? "_blank" : undefined}
+                    rel="noopener noreferrer"
                     className="w-8 h-8 rounded-lg bg-[#1e2d3d] flex items-center justify-center text-[#64748b] hover:text-[#e2e8f0] transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
                     <Github size={14} />
-                  </motion.button>
-                  <motion.button
+                  </motion.a>
+                  <motion.a
+                    href={project.demo}
+                    target={project.demo !== "#" ? "_blank" : undefined}
+                    rel="noopener noreferrer"
                     className="w-8 h-8 rounded-lg bg-[#1e2d3d] flex items-center justify-center text-[#64748b] hover:text-[#e2e8f0] transition-colors"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                   >
                     <ExternalLink size={14} />
-                  </motion.button>
+                  </motion.a>
                 </div>
               </div>
 
